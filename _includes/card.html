@@ -1,0 +1,8 @@
+{%- assign p = include.post -%}
+<article class="card" data-cat="{{ p.category }}">
+  <a class="card-img" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ p.image | default: '/assets/img/placeholder-1.svg' | relative_url }}" alt="" loading="lazy"></a>
+  <p class="cat">{{ p.category }}{% if p.demo %} <span class="demo">Exemple</span>{% endif %}</p>
+  <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+  <p class="sum">{{ p.summary }}</p>
+  <p class="meta"><time datetime="{{ p.date | date_to_xmlschema }}">{% include date_fr.html d=p.date %}</time><span class="sep">·</span>{% include reading_time.html p=p %}</p>
+</article>

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="article">
+  <header class="art-head">
+    <p class="cat"><a href="{{ '/analyses/' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a>{% if page.demo %} <span class="demo">Exemple de démonstration</span>{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+    <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{% include date_fr.html d=page.date %}</time><span class="sep">·</span>{% include reading_time.html p=page %}</p>
+  </header>
+  <figure class="hero">
+    <img src="{{ page.image | default: '/assets/img/placeholder-1.svg' | relative_url }}" alt="{{ page.image_alt | default: page.image_caption }}">
+    {% if page.image_caption or page.image_credit %}<figcaption>{{ page.image_caption }}{% if page.image_credit %} <span class="credit">{{ page.image_credit }}</span>{% endif %}</figcaption>{% endif %}
+  </figure>
+  <div class="prose">
+    {% if page.summary %}<p class="chapo">{{ page.summary }}</p>{% endif %}
+    {{ content }}
+  </div>
+  <p class="back"><a href="{{ '/analyses/' | relative_url }}">← Toutes les analyses</a></p>
+</article>

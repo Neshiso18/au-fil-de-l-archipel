@@ -1,0 +1,1 @@
+{%- assign m = include.d | date: "%-m" | minus: 1 -%}{{ include.d | date: "%-d" }}{% if include.d | date: "%-d" == "1" %}er{% endif %} {{ site.data.fr.months[m] }} {{ include.d | date: "%Y" }}

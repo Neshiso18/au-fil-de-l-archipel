@@ -1,0 +1,12 @@
+title: Au fil de l'archipel
+tagline: Revue d'analyse politique et géopolitique du Japon contemporain
+description: Revue personnelle et indépendante d'analyse politique et géopolitique du Japon contemporain, en français, à partir de sources japonaises, françaises et anglophones.
+lang: fr_FR
+# Si le dépôt s'appelle autre chose que <pseudo>.github.io, mets ici "/nom-du-depot"
+baseurl: ""
+# Mets ici https://<pseudo>.github.io
+url: ""
+markdown: kramdown
+permalink: /analyses/:title/
+plugins: [jekyll-seo-tag, jekyll-feed, jekyll-sitemap]
+exclude: [README.md, Gemfile, Gemfile.lock, .gitignore]

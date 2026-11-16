@@ -1,0 +1,10 @@
+<header class="masthead">
+  <a class="title" href="{{ '/' | relative_url }}">Au fil de<br class="m"> l'archipel</a>
+  <p class="tagline">{{ site.tagline }}</p>
+  <nav aria-label="Navigation principale">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Accueil</a>
+    <a href="{{ '/analyses/' | relative_url }}"{% if page.url contains '/analyses/' %} aria-current="page"{% endif %}>Analyses</a>
+    <a href="{{ '/demarche/' | relative_url }}"{% if page.url == '/demarche/' %} aria-current="page"{% endif %}>Démarche</a>
+    <a href="{{ '/a-propos/' | relative_url }}"{% if page.url == '/a-propos/' %} aria-current="page"{% endif %}>À propos</a>
+  </nav>
+</header>

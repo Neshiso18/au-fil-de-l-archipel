@@ -1,0 +1,21 @@
+---
+layout: default
+title: Analyses
+description: Archive de toutes les analyses publiées.
+---
+{%- assign cats = site.posts | map: "category" | uniq | sort -%}
+<div class="wrap">
+  <h1 class="page-title">Analyses</h1>
+  <p class="page-sub">L'ensemble des publications, de la plus récente à la plus ancienne.</p>
+  <div class="tags" role="group" aria-label="Filtrer par catégorie">
+    <button class="tag on" data-f="all">Toutes</button>
+    {% for c in cats %}<button class="tag" data-f="{{ c }}" id="{{ c | slugify }}">{{ c }}</button>{% endfor %}
+  </div>
+  <div class="grid">{% for p in site.posts %}{% include card.html post=p %}{% endfor %}</div>
+</div>
+<script>
+(function(){var b=document.querySelectorAll('.tag'),c=document.querySelectorAll('.card');
+function f(v){b.forEach(function(x){x.classList.toggle('on',x.dataset.f===v)});c.forEach(function(k){k.hidden=!(v==='all'||k.dataset.cat===v)})}
+b.forEach(function(x){x.addEventListener('click',function(){f(x.dataset.f)})});
+var h=location.hash.slice(1);if(h){b.forEach(function(x){if(x.id===h)f(x.dataset.f)})}})();
+</script>

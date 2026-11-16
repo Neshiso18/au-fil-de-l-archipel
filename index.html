@@ -1,0 +1,35 @@
+---
+layout: default
+title: Accueil
+---
+{%- assign featured = site.posts | where: "featured", true | first | default: site.posts.first -%}
+<div class="wrap">
+{% if featured %}
+<section class="featured">
+  <div class="f-text">
+    <p class="kicker"><span></span>À la une</p>
+    <p class="cat">{{ featured.category }}{% if featured.demo %} <span class="demo">Exemple</span>{% endif %}</p>
+    <h2><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+    <p class="meta"><time>{% include date_fr.html d=featured.date %}</time><span class="sep">·</span>{% include reading_time.html p=featured %}</p>
+    <p class="lead">{{ featured.summary }}</p>
+    <a class="more" href="{{ featured.url | relative_url }}">Lire l'analyse <span></span></a>
+  </div>
+  <a class="f-img" href="{{ featured.url | relative_url }}"><img src="{{ featured.image | default: '/assets/img/placeholder-1.svg' | relative_url }}" alt="{{ featured.image_alt }}"></a>
+</section>
+{% endif %}
+
+<section>
+  <h2 class="sec">Publications récentes</h2>
+  <div class="grid">
+    {% assign n = 0 %}
+    {% for p in site.posts %}{% if p.url != featured.url and n < 6 %}{% include card.html post=p %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+  </div>
+  <p class="all"><a class="more" href="{{ '/analyses/' | relative_url }}">Toutes les analyses <span></span></a></p>
+</section>
+
+<section class="intro">
+  <h2 class="sec">La revue</h2>
+  <p>« Au fil de l'archipel » est un projet personnel : un carnet de travail d'étudiant en sciences politiques qui apprend le japonais et cherche à comprendre le Japon contemporain — ses institutions, sa société, ses relations internationales — en s'appuyant autant que possible sur des sources japonaises.</p>
+  <a class="more" href="{{ '/demarche/' | relative_url }}">Découvrir la démarche <span></span></a>
+</section>
+</div>
