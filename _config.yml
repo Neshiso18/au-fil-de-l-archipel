@@ -9,8 +9,8 @@ timezone: Europe/Paris
 # --- URL du site (à adapter) ---
 # Site « utilisateur » (nom.github.io)  : baseurl: ""
 # Site « projet » (nom.github.io/depot) : baseurl: "/depot"
-url: "https://VOTRE-COMPTE.github.io"
-baseurl: ""
+url: "https://neshiso18.github.io"
+baseurl: "/au-fil-de-l-archipel"
 
 # --- Contenu ---
 markdown: kramdown
