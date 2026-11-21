@@ -1,0 +1,31 @@
+# --- Identité de la revue ---
+title: "Au fil de l’archipel"
+tagline: "Revue d’analyse politique et géopolitique du Japon contemporain"
+description: "Revue indépendante d’analyse politique et géopolitique du Japon contemporain."
+author: "La rédaction"
+lang: fr
+timezone: Europe/Paris
+
+# --- URL du site (à adapter) ---
+# Site « utilisateur » (nom.github.io)  : baseurl: ""
+# Site « projet » (nom.github.io/depot) : baseurl: "/depot"
+url: "https://VOTRE-COMPTE.github.io"
+baseurl: ""
+
+# --- Contenu ---
+markdown: kramdown
+permalink: /analyses/:title/
+plugins:
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

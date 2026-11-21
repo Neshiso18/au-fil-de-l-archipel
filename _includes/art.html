@@ -1,0 +1,16 @@
+{%- comment -%}Illustration SVG générative. Paramètres : post=, dark=true (variante sombre). Champ « art: 0-5 » dans le front matter pour choisir le motif.{%- endcomment -%}
+{%- assign i = include.post.art -%}
+{%- unless i -%}{%- assign i = include.post.title | size | modulo: 6 -%}{%- endunless -%}
+{%- if include.dark -%}
+{%- assign c1 = '#1d1d1d' -%}{%- assign c2 = '#111111' -%}{%- assign isl = '#0b0b0b' -%}{%- assign st = '#eeece7' -%}{%- assign gid = 'gd' | append: i -%}
+{%- else -%}
+{%- assign c1 = '#ece8de' -%}{%- assign c2 = '#f7f5f0' -%}{%- assign isl = '#1c1c1c' -%}{%- assign st = '#1c1c1c' -%}{%- assign gid = 'gl' | append: i -%}
+{%- endif -%}
+{%- assign x1 = i | times: 20 -%}{%- assign x2 = i | times: 10 -%}{%- assign sh = i | modulo: 3 -%}
+<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="{{ gid }}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{{ c1 }}"/><stop offset="1" stop-color="{{ c2 }}"/></linearGradient></defs><rect width="400" height="225" fill="url(#{{ gid }})"/><circle cx="{{ i | times: 45 | plus: 90 }}" cy="{{ i | modulo: 2 | times: 20 | plus: 70 }}" r="{{ sh | times: 5 | plus: 26 }}" fill="#c82d2d" opacity=".9"/><path d="M{{ x1 | plus: 40 }} 160 Q {{ x1 | plus: 70 }} 120 {{ x1 | plus: 110 }} 160Z" fill="{{ isl }}"/><path d="M{{ 210 | minus: x2 }} 160 Q {{ 250 | minus: x2 }} 132 {{ 290 | minus: x2 }} 160Z" fill="{{ isl }}"/>
+{%- for k in (0..4) -%}
+{%- assign y = k | times: 16 | plus: 130 | plus: sh | plus: sh | plus: sh | plus: sh | plus: sh | plus: sh -%}
+{%- assign cy = k | times: 16 | plus: 110 | plus: i | plus: i | plus: i -%}
+<path d="M-20 {{ y }} Q 60 {{ cy }} 140 {{ y }} T 300 {{ y }} T 460 {{ y }}" fill="none" stroke="{{ st }}" stroke-opacity="{{ k | times: 5 | plus: 10 | divided_by: 100.0 }}" stroke-width="1"/>
+{%- endfor -%}
+<rect y="160" width="400" height="65" fill="{{ c2 }}" opacity=".6"/></svg>

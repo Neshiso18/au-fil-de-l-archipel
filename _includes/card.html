@@ -1,0 +1,6 @@
+{%- assign p = include.post -%}
+<a class="card" href="{{ p.url | relative_url }}" data-cat="{{ p.categorie | escape }}">
+<div class="img">{% include art.html post=p %}</div>
+<div class="b"><span class="tag">{{ p.categorie }}</span><h3>{{ p.title }}</h3><p>{{ p.extrait }}</p>
+<span class="meta">{% include date_fr.html d=p.date %} · {% include lecture.html post=p %} min de lecture</span></div>
+</a>

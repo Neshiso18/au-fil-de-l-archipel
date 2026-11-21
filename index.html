@@ -1,0 +1,30 @@
+---
+layout: default
+nav: accueil
+---
+{% assign une = site.posts.first %}
+{% if une %}
+<section id="featured">
+<a class="feat" href="{{ une.url | relative_url }}">
+<div>
+<span class="tag">À la une · {{ une.categorie }}</span>
+<h3>{{ une.title }}</h3>
+<span class="meta">{% include date_fr.html d=une.date %} · {% include lecture.html post=une %} min de lecture</span>
+<p>{{ une.extrait }}</p>
+<p style="margin-top:20px"><span class="btn">Lire l’analyse</span></p>
+</div>
+<div class="img">{% include art.html post=une dark=true %}</div>
+</a>
+</section>
+{% endif %}
+
+<h2 class="sec">Publications récentes <small>最新記事</small></h2>
+<div class="grid">
+{% for post in site.posts offset:1 limit:3 %}{% include card.html post=post %}{% endfor %}
+</div>
+
+<h2 class="sec">Notre démarche <small>方法</small></h2>
+<div class="demarche-box">
+<div><span class="tag">Méthode</span><p>Chaque analyse confronte les sources primaires japonaises — 日本国会 (Diète), 官邸 (Kantei), METI, MOFA — aux lectures françaises et anglophones, afin de distinguer le discours officiel de la pratique administrative.</p></div>
+<a class="btn" href="{{ '/demarche/' | relative_url }}">Lire la démarche</a>
+</div>

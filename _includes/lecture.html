@@ -1,0 +1,4 @@
+{%- comment -%}Temps de lecture : champ « lecture » du front matter, sinon calcul automatique (220 mots/min).{%- endcomment -%}
+{%- assign t = include.post.lecture -%}
+{%- unless t -%}{%- assign t = include.post.content | strip_html | number_of_words | divided_by: 220 | plus: 1 -%}{%- endunless -%}
+{{- t -}}

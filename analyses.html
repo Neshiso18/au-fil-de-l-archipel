@@ -1,0 +1,25 @@
+---
+layout: default
+title: Analyses
+nav: analyses
+permalink: /analyses/
+---
+<h2 class="sec" style="margin-top:0">Analyses <small>分析</small></h2>
+{% assign cats = site.posts | map: "categorie" | uniq | sort %}
+<div class="filters" id="filters">
+<button class="on" data-c="Tous">Tous</button>
+{% for c in cats %}<button data-c="{{ c | escape }}">{{ c }}</button>{% endfor %}
+</div>
+<div class="grid" id="all">
+{% for post in site.posts %}{% include card.html post=post %}{% endfor %}
+</div>
+<script>
+document.querySelectorAll('#filters button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#filters button').forEach(function(x){x.classList.toggle('on',x===b)});
+    document.querySelectorAll('#all .card').forEach(function(c){
+      c.style.display=(b.dataset.c==='Tous'||c.dataset.cat===b.dataset.c)?'':'none';
+    });
+  });
+});
+</script>
